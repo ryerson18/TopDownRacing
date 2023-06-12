@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Game_Timer = new System.Windows.Forms.Timer(this.components);
+            this.titleLabel = new System.Windows.Forms.Label();
+            this.SubtitleLabel = new System.Windows.Forms.Label();
+            this.car1Lap = new System.Windows.Forms.Label();
+            this.car2Lap = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Game_Timer
@@ -39,12 +43,63 @@
             this.Game_Timer.Interval = 20;
             this.Game_Timer.Tick += new System.EventHandler(this.Game_Timer_Tick);
             // 
+            // titleLabel
+            // 
+            this.titleLabel.BackColor = System.Drawing.Color.Transparent;
+            this.titleLabel.Font = new System.Drawing.Font("Cooper Black", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.titleLabel.Location = new System.Drawing.Point(1, 268);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(999, 61);
+            this.titleLabel.TabIndex = 0;
+            this.titleLabel.Text = "TopDownRacing";
+            this.titleLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // SubtitleLabel
+            // 
+            this.SubtitleLabel.BackColor = System.Drawing.Color.Transparent;
+            this.SubtitleLabel.Font = new System.Drawing.Font("Cooper Black", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubtitleLabel.ForeColor = System.Drawing.Color.Red;
+            this.SubtitleLabel.Location = new System.Drawing.Point(1, 353);
+            this.SubtitleLabel.Name = "SubtitleLabel";
+            this.SubtitleLabel.Size = new System.Drawing.Size(999, 61);
+            this.SubtitleLabel.TabIndex = 1;
+            this.SubtitleLabel.Text = "Press Space to Play and Esc to Exit";
+            this.SubtitleLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // car1Lap
+            // 
+            this.car1Lap.BackColor = System.Drawing.Color.Transparent;
+            this.car1Lap.Font = new System.Drawing.Font("Microsoft YaHei", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.car1Lap.ForeColor = System.Drawing.Color.Blue;
+            this.car1Lap.Location = new System.Drawing.Point(312, 299);
+            this.car1Lap.Name = "car1Lap";
+            this.car1Lap.Size = new System.Drawing.Size(96, 146);
+            this.car1Lap.TabIndex = 2;
+            this.car1Lap.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // car2Lap
+            // 
+            this.car2Lap.BackColor = System.Drawing.Color.Transparent;
+            this.car2Lap.Font = new System.Drawing.Font("Microsoft YaHei", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.car2Lap.ForeColor = System.Drawing.Color.Blue;
+            this.car2Lap.Location = new System.Drawing.Point(595, 299);
+            this.car2Lap.Name = "car2Lap";
+            this.car2Lap.Size = new System.Drawing.Size(96, 146);
+            this.car2Lap.TabIndex = 3;
+            this.car2Lap.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1000, 788);
+            this.Controls.Add(this.car1Lap);
+            this.Controls.Add(this.titleLabel);
+            this.Controls.Add(this.SubtitleLabel);
+            this.Controls.Add(this.car2Lap);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -61,6 +116,10 @@
         #endregion
 
         private System.Windows.Forms.Timer Game_Timer;
+        private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.Label SubtitleLabel;
+        private System.Windows.Forms.Label car1Lap;
+        private System.Windows.Forms.Label car2Lap;
     }
 }
 
