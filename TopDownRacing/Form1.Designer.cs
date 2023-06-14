@@ -35,11 +35,11 @@
             this.SubtitleLabel = new System.Windows.Forms.Label();
             this.car1Lap = new System.Windows.Forms.Label();
             this.car2Lap = new System.Windows.Forms.Label();
+            this.Winlabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Game_Timer
             // 
-            this.Game_Timer.Enabled = true;
             this.Game_Timer.Interval = 20;
             this.Game_Timer.Tick += new System.EventHandler(this.Game_Timer_Tick);
             // 
@@ -77,6 +77,7 @@
             this.car1Lap.Size = new System.Drawing.Size(96, 146);
             this.car1Lap.TabIndex = 2;
             this.car1Lap.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.car1Lap.Visible = false;
             // 
             // car2Lap
             // 
@@ -88,18 +89,32 @@
             this.car2Lap.Size = new System.Drawing.Size(96, 146);
             this.car2Lap.TabIndex = 3;
             this.car2Lap.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.car2Lap.Visible = false;
+            // 
+            // Winlabel
+            // 
+            this.Winlabel.BackColor = System.Drawing.Color.Transparent;
+            this.Winlabel.Font = new System.Drawing.Font("Stencil", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Winlabel.ForeColor = System.Drawing.Color.White;
+            this.Winlabel.Location = new System.Drawing.Point(4, 268);
+            this.Winlabel.Name = "Winlabel";
+            this.Winlabel.Size = new System.Drawing.Size(976, 313);
+            this.Winlabel.TabIndex = 4;
+            this.Winlabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Winlabel.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1000, 788);
+            this.Controls.Add(this.Winlabel);
+            this.Controls.Add(this.car2Lap);
             this.Controls.Add(this.car1Lap);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.SubtitleLabel);
-            this.Controls.Add(this.car2Lap);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -120,6 +135,7 @@
         private System.Windows.Forms.Label SubtitleLabel;
         private System.Windows.Forms.Label car1Lap;
         private System.Windows.Forms.Label car2Lap;
+        private System.Windows.Forms.Label Winlabel;
     }
 }
 

@@ -26,9 +26,11 @@ namespace TopDownRacing
         SolidBrush redBrush = new SolidBrush(Color.Red);
         SolidBrush yellowBrush = new SolidBrush(Color.Yellow);
         SolidBrush blueBrush = new SolidBrush(Color.Blue);
+        SolidBrush whiteBrush = new SolidBrush(Color.White);
+        SolidBrush blackBrush = new SolidBrush(Color.Black);
         //track Pen
-        Pen blackPen = new Pen(Color.Wheat,5);
-        Pen redPen = new Pen(Color.Red,5);
+        Pen WhitePen = new Pen(Color.WhiteSmoke,5);
+
         // list of track limits
         List<Rectangle> tracklimitsList = new List<Rectangle>();
 
@@ -71,10 +73,11 @@ namespace TopDownRacing
         int carlap1 = 0;
 
         //player 2 value
-        int carAngle2 = 0;
+        int carAngle2 = 90;
         int carSpeed2 = 10;
         int widthCar2 = 15;
         int heightCar2 = 30;
+        int carlap2 = 0;
 
       
         public Form1()
@@ -137,26 +140,36 @@ namespace TopDownRacing
            
 
             //player 1 starting value
-            int carAngle1 = 0;
-            int carSpeed1 = 5;
-            int widthCar1 = 15;
-            int heightCar1 = 30;
+            carAngle1 = 90;
+            carSpeed1 = 5;
+            widthCar1 = 15;
+            heightCar1 = 30;
+            carlap1 = 0;
 
-            int xCar1 = 550;
-            int yCar1 = 125;
+            int xCar1 = 400;
+            int yCar1 = 120;
 
             Car1 = new Rectangle(xCar1,yCar1, widthCar1,heightCar1);
 
             //player 2 starting value
-            int carAngle2 = 0;
-            int carSpeed2 = 5;
-            int widthCar2 = 15;
-            int heightCar2 = 30;
+            carAngle2 = 90;
+            carSpeed2 = 5;
+            widthCar2 = 15;
+            heightCar2 = 30;
+            carlap2 = 0;
 
-            int xCar2 = 50;
-            int yCar2 = this.Height - 150;
+            int xCar2 = 400;
+            int yCar2 = 210;
 
             Car2 = new Rectangle(xCar2, yCar2, widthCar2, heightCar2);
+
+            //display score text
+            car1Lap.Visible = true;
+            car2Lap.Visible = true;
+
+            Winlabel.Text = "";
+            car1Lap.Text = "";
+            car2Lap.Text = "";
 
             state = "playing";
             Game_Timer.Enabled = true;
@@ -318,6 +331,7 @@ namespace TopDownRacing
             }
 
             // check to see if players go around the whole track
+            // car 1
             if (check1.IntersectsWith(Car1))
             {
                 car1Check1 = true;
@@ -334,22 +348,92 @@ namespace TopDownRacing
             {
                 car1Check4 = true;
             }
-            if()
-
-
-            if (car1Check1 == true && car1Check2 == true && car1Check3 == true && car1Check4 == true)
+            if(redCheck.IntersectsWith(Car1))
             {
-
-                car1Lap.Text = $"{carlap1++}";
-
+                car1redCheck = true;
                 car1Check1 = false;
                 car1Check2 = false;
                 car1Check3 = false;
                 car1Check4 = false;
             }
+
+
+            if (car1Check1 == true && car1Check2 == true && car1Check3 == true && car1Check4 == true)
+            {
+                carlap1++;
+                car1Lap.Text = $"{carlap1}";
+
+                car1Check1 = false;
+                car1Check2 = false;
+                car1Check3 = false;
+                car1Check4 = false;
+                car1redCheck = false;      
+            }
+            //car 2
+            if (check1.IntersectsWith(Car2))
+            {
+                car2Check1 = true;
+            }
+            if (check2.IntersectsWith(Car2))
+            {
+                car2Check2 = true;
+            }
+            if (check3.IntersectsWith(Car2))
+            {
+                car2Check3 = true;
+            }
+            if (check4.IntersectsWith(Car2))
+            {
+                car2Check4 = true;
+            }
+            if (redCheck.IntersectsWith(Car2))
+            {
+                car2redCheck = true;
+                car2Check1 = false;
+                car2Check2 = false;
+                car2Check3 = false;
+                car2Check4 = false;
+            }
+            if (car2Check1 == true && car2Check2 == true && car2Check3 == true && car2Check4 == true)
+            {
+                carlap2++;
+                car2Lap.Text = $"{carlap2}";
+
+                car2Check1 = false;
+                car2Check2 = false;
+                car2Check3 = false;
+                car2Check4 = false;
+                car2redCheck = false;
+            }
+
+
+
+            //check to see if players have doen all the laps
+            if (carlap1 == 1)
+            {
+                Game_Timer.Stop();
+                Winlabel.Visible = true;
+                titleLabel.Visible = false;
+                car1Lap.Visible = false;
+                car2Lap.Visible = false;
+                state = "over";
+
                 
 
-          
+            }
+            
+            if(carlap2 == 1)
+            {
+                Game_Timer.Stop();
+                Winlabel.Visible = true;
+                car1Lap.Visible = false;
+                car2Lap.Visible = false;
+                state = "over";
+
+                Winlabel.Text = "Player two is the race winner";
+            }
+
+
 
 
 
@@ -370,6 +454,31 @@ namespace TopDownRacing
                 titleLabel.Text = "";
                 SubtitleLabel.Text = "";
 
+                //start line
+                //side one
+                e.Graphics.FillRectangle(blackBrush, 490, 92, 20, 20); 
+                e.Graphics.FillRectangle(whiteBrush, 490, 112, 20, 20);
+                e.Graphics.FillRectangle(blackBrush, 490, 132, 20, 20);
+                e.Graphics.FillRectangle(whiteBrush, 490, 152, 20, 20);
+                e.Graphics.FillRectangle(blackBrush, 490, 172, 20, 20);
+                e.Graphics.FillRectangle(whiteBrush, 490, 192, 20, 20);
+                e.Graphics.FillRectangle(blackBrush, 490, 212, 20, 20);
+                e.Graphics.FillRectangle(whiteBrush, 490, 232, 20, 20);
+                e.Graphics.FillRectangle(blackBrush, 490, 212, 20, 20);
+                e.Graphics.FillRectangle(blackBrush, 490, 252, 20, 20);
+
+                //side two
+                e.Graphics.FillRectangle(whiteBrush, 510, 92, 20, 20);
+                e.Graphics.FillRectangle(blackBrush, 510, 112, 20, 20);
+                e.Graphics.FillRectangle(whiteBrush, 510, 132, 20, 20);
+                e.Graphics.FillRectangle(blackBrush, 510, 152, 20, 20);
+                e.Graphics.FillRectangle(whiteBrush, 510, 172, 20, 20);
+                e.Graphics.FillRectangle(blackBrush, 510, 192, 20, 20);
+                e.Graphics.FillRectangle(blackBrush, 510, 192, 20, 20);
+                e.Graphics.FillRectangle(whiteBrush, 510, 212, 20, 20);
+                e.Graphics.FillRectangle(blackBrush, 510, 232, 20, 20);
+                e.Graphics.FillRectangle(whiteBrush, 510, 252, 20, 20);
+
                 //player 1
                 e.Graphics.TranslateTransform(widthCar1 / 2 + Car1.X, widthCar1 / 2 + Car1.Y);
                 e.Graphics.RotateTransform(carAngle1);
@@ -386,30 +495,33 @@ namespace TopDownRacing
 
                 //tracl
                 //inside
-                e.Graphics.DrawLine(blackPen, 350, 525, 650, 525);
-                e.Graphics.DrawLine(blackPen, 350, 275, 650, 275);
-                e.Graphics.DrawArc(blackPen, 225, 275, 250, 250, 90, 180);
-                e.Graphics.DrawArc(blackPen, 510, 275, 250, 250, -90, 180);
+                e.Graphics.DrawLine(WhitePen, 350, 525, 650, 525);
+                e.Graphics.DrawLine(WhitePen, 350, 275, 650, 275);
+                e.Graphics.DrawArc(WhitePen, 225, 275, 250, 250, 90, 180);
+                e.Graphics.DrawArc(WhitePen, 510, 275, 250, 250, -90, 180);
 
                 // outside
-                e.Graphics.DrawLine(blackPen, 288, 700, 700, 700);
-                e.Graphics.DrawLine(blackPen, 285, 88, 700, 88);
-                e.Graphics.DrawArc(blackPen, 5, 88, 612, 612, 90, 180);
-                e.Graphics.DrawArc(blackPen, 365, 88, 612, 612, -90, 180);
+                e.Graphics.DrawLine(WhitePen, 288, 700, 700, 700);
+                e.Graphics.DrawLine(WhitePen, 285, 88, 700, 88);
+                e.Graphics.DrawArc(WhitePen, 5, 88, 612, 612, 90, 180);
+                e.Graphics.DrawArc(WhitePen, 365, 88, 612, 612, -90, 180);               
+            }
 
+            if(state == "over")
+            {
+                if(carlap1 ==1)
+                {
+                 Winlabel.Text = "Player one is the race winner";
+                 Winlabel.Text += "\n\nPress Space to Play or Esc to Exit";
+                }
 
-                ////start finish / check point
+                if(carlap2 == 1)
+                {
+                 Winlabel.Text = "Player two is the race winner";
+                 Winlabel.Text += "\n\nPress Space to Play or Esc to Exit";
 
-                e.Graphics.FillRectangle(yellowBrush, 490, 88, 5, 190);
+                }
 
-                e.Graphics.FillRectangle(redBrush, 540, 88, 5, 190);
-
-                e.Graphics.FillRectangle(yellowBrush,760,390, 210, 5);
-
-                e.Graphics.FillRectangle(yellowBrush, 500, 525, 5, 175);
-
-                e.Graphics.FillRectangle(yellowBrush, 7, 390, 210, 5);
-                ////check 1
                 
             }
 
