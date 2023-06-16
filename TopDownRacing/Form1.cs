@@ -15,7 +15,6 @@ namespace TopDownRacing
 
         string state = "waiting";
 
-
         //player 1
         Rectangle Car1;
         //player 2
@@ -133,6 +132,7 @@ namespace TopDownRacing
         int widthCar1 = 15;
         int heightCar1 = 30;
         int carlap1 = 0;
+        int car1Track2 = 0;
 
         //player 2 value
         int carAngle2 = 90;
@@ -140,8 +140,9 @@ namespace TopDownRacing
         int widthCar2 = 15;
         int heightCar2 = 30;
         int carlap2 = 0;
+        int car2Track2 = 0;
 
-        int track = 1;
+        int track = 2;
 
       
         public Form1()
@@ -555,10 +556,128 @@ namespace TopDownRacing
                 {
                     carSpeed2 = 8;
                 }
+
+                // check to see if players go around the whole track
+                //car 1
+                if (track2check1.IntersectsWith(Car1))
+                {
+                    track2car1Check1 = true;
+                }
+                if (track2check2.IntersectsWith(Car1))
+                {
+                    track2car1Check2 = true;
+                }
+                if (track2check3.IntersectsWith(Car1))
+                {
+                    track2car1Check3 = true;
+                }
+                if (track2check4.IntersectsWith(Car1))
+                {
+                    track2car1Check4 = true;
+                }
+                if (track2check5.IntersectsWith(Car1))
+                {
+                    track2car1Check5 = true;
+                }
+                if (track2check6.IntersectsWith(Car1))
+                {
+                    track2car1Check6 = true;
+                }
+                if (track2check7.IntersectsWith(Car1))
+                {
+                    track2car1Check7 = true;
+                }
+                if (track2check8.IntersectsWith(Car1))
+                {
+                    track2car1Check8 = true;
+                }
+                if (track2check9.IntersectsWith(Car1))
+                {
+                    track2car1Check9 = true;
+                }
+                if (track2check10.IntersectsWith(Car1))
+                {
+                    track2car1Check10 = true;
+                }
+                if (track2check11.IntersectsWith(Car1))
+                {
+                    track2car1Check11 = true;
+                }
+                if (track2check12.IntersectsWith(Car1))
+                {
+                    track2car1Check12 = true;
+                }
+                if (track2check13.IntersectsWith(Car1))
+                {
+                    track2car1Check13 = true;
+                }
+                if (track2check14.IntersectsWith(Car1))
+                {
+                    track2car1Check14 = true;
+                }
+                if (track2check15.IntersectsWith(Car1))
+                {
+                    track2car1Check15 = true;
+                }
+                if (track2check16.IntersectsWith(Car1))
+                {
+                    track2car1Check16 = true;
+                }
+                if (track2redCheck.IntersectsWith(Car1))
+                {
+                    track2car1redCheck = true;
+                    track2car1Check1 = false;
+                    track2car1Check2 = false;
+                    track2car1Check3 = false;
+                    track2car1Check4 = false;
+                    track2car1Check5 = false;
+                    track2car1Check6 = false;
+                    track2car1Check7 = false;
+                    track2car1Check8 = false;
+                    track2car1Check9 = false;
+                    track2car1Check10 = false;
+                    track2car1Check11 = false;
+                    track2car1Check12 = false;
+                    track2car1Check13 = false;
+                    track2car1Check14 = false;
+                    track2car1Check15 = false;
+                    track2car1Check16 = false;
+                }
+
+                if (track2car1Check1 == true && track2car1Check2 == true && track2car1Check3 == true && track2car1Check4 == true && track2car1Check5 == true && track2car1Check6 == true && track2car1Check7 == true && track2car1Check8 == true && track2car1Check9 == true && track2car1Check10 == true && track2car1Check11 == true && track2car1Check12 == true && track2car1Check13 == true && track2car1Check14 == true && track2car1Check15 == true && track2car1Check16 == true)
+                {
+                    car1Track2++;
+
+                    track2car1Lap.Text = $"{car1Track2}";
+
+                    track2car1redCheck = false;
+                    track2car1Check1 = false;
+                    track2car1Check2 = false;
+                    track2car1Check3 = false;
+                    track2car1Check4 = false;
+                    track2car1Check5 = false;
+                    track2car1Check6 = false;
+                    track2car1Check7 = false;
+                    track2car1Check8 = false;
+                    track2car1Check9 = false;
+                    track2car1Check10 = false;
+                    track2car1Check11 = false;
+                    track2car1Check12 = false;
+                    track2car1Check13 = false;
+                    track2car1Check14 = false;
+                    track2car1Check15 = false;
+                    track2car1Check16 = false;
+
+
+
+                }
+
+
+
+
+                
+
             }
-           
-
-
 
             //check to see if players have doen all the laps
             if (carlap1 == 1)
@@ -766,8 +885,6 @@ namespace TopDownRacing
             Car2.Y += deltaY;
             Car2.X -= deltaX;
         }
-
-       
 
     }
 }

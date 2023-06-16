@@ -36,6 +36,8 @@
             this.car1Lap = new System.Windows.Forms.Label();
             this.car2Lap = new System.Windows.Forms.Label();
             this.Winlabel = new System.Windows.Forms.Label();
+            this.track2car1Lap = new System.Windows.Forms.Label();
+            this.track2car2Lap = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Game_Timer
@@ -103,6 +105,28 @@
             this.Winlabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Winlabel.Visible = false;
             // 
+            // track2car1Lap
+            // 
+            this.track2car1Lap.BackColor = System.Drawing.Color.Red;
+            this.track2car1Lap.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.track2car1Lap.Location = new System.Drawing.Point(779, 166);
+            this.track2car1Lap.Name = "track2car1Lap";
+            this.track2car1Lap.Size = new System.Drawing.Size(36, 66);
+            this.track2car1Lap.TabIndex = 5;
+            this.track2car1Lap.Text = "0";
+            this.track2car1Lap.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // track2car2Lap
+            // 
+            this.track2car2Lap.BackColor = System.Drawing.Color.Red;
+            this.track2car2Lap.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.track2car2Lap.Location = new System.Drawing.Point(779, 287);
+            this.track2car2Lap.Name = "track2car2Lap";
+            this.track2car2Lap.Size = new System.Drawing.Size(36, 66);
+            this.track2car2Lap.TabIndex = 6;
+            this.track2car2Lap.Text = "1";
+            this.track2car2Lap.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -110,6 +134,8 @@
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1000, 788);
+            this.Controls.Add(this.track2car2Lap);
+            this.Controls.Add(this.track2car1Lap);
             this.Controls.Add(this.Winlabel);
             this.Controls.Add(this.car2Lap);
             this.Controls.Add(this.car1Lap);
@@ -136,6 +162,8 @@
         private System.Windows.Forms.Label car1Lap;
         private System.Windows.Forms.Label car2Lap;
         private System.Windows.Forms.Label Winlabel;
+        private System.Windows.Forms.Label track2car1Lap;
+        private System.Windows.Forms.Label track2car2Lap;
     }
 }
 
