@@ -48,7 +48,7 @@
             // titleLabel
             // 
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
-            this.titleLabel.Font = new System.Drawing.Font("Cooper Black", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.titleLabel.Location = new System.Drawing.Point(1, 268);
             this.titleLabel.Name = "titleLabel";
@@ -60,7 +60,7 @@
             // SubtitleLabel
             // 
             this.SubtitleLabel.BackColor = System.Drawing.Color.Transparent;
-            this.SubtitleLabel.Font = new System.Drawing.Font("Cooper Black", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubtitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubtitleLabel.ForeColor = System.Drawing.Color.Red;
             this.SubtitleLabel.Location = new System.Drawing.Point(1, 353);
             this.SubtitleLabel.Name = "SubtitleLabel";
@@ -73,7 +73,7 @@
             // 
             this.car1Lap.BackColor = System.Drawing.Color.Transparent;
             this.car1Lap.Font = new System.Drawing.Font("Microsoft YaHei", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.car1Lap.ForeColor = System.Drawing.Color.Blue;
+            this.car1Lap.ForeColor = System.Drawing.Color.Red;
             this.car1Lap.Location = new System.Drawing.Point(312, 299);
             this.car1Lap.Name = "car1Lap";
             this.car1Lap.Size = new System.Drawing.Size(96, 146);
@@ -96,36 +96,38 @@
             // Winlabel
             // 
             this.Winlabel.BackColor = System.Drawing.Color.Transparent;
-            this.Winlabel.Font = new System.Drawing.Font("Stencil", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Winlabel.ForeColor = System.Drawing.Color.White;
-            this.Winlabel.Location = new System.Drawing.Point(4, 268);
+            this.Winlabel.Font = new System.Drawing.Font("Sitka Small", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Winlabel.ForeColor = System.Drawing.Color.Black;
+            this.Winlabel.Location = new System.Drawing.Point(12, 171);
             this.Winlabel.Name = "Winlabel";
-            this.Winlabel.Size = new System.Drawing.Size(976, 313);
+            this.Winlabel.Size = new System.Drawing.Size(976, 386);
             this.Winlabel.TabIndex = 4;
             this.Winlabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Winlabel.Visible = false;
             // 
             // track2car1Lap
             // 
-            this.track2car1Lap.BackColor = System.Drawing.Color.Red;
+            this.track2car1Lap.BackColor = System.Drawing.Color.Transparent;
             this.track2car1Lap.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.track2car1Lap.Location = new System.Drawing.Point(779, 166);
+            this.track2car1Lap.ForeColor = System.Drawing.Color.Red;
+            this.track2car1Lap.Location = new System.Drawing.Point(779, 202);
             this.track2car1Lap.Name = "track2car1Lap";
             this.track2car1Lap.Size = new System.Drawing.Size(36, 66);
             this.track2car1Lap.TabIndex = 5;
-            this.track2car1Lap.Text = "0";
             this.track2car1Lap.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.track2car1Lap.Visible = false;
             // 
             // track2car2Lap
             // 
-            this.track2car2Lap.BackColor = System.Drawing.Color.Red;
+            this.track2car2Lap.BackColor = System.Drawing.Color.Transparent;
             this.track2car2Lap.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.track2car2Lap.ForeColor = System.Drawing.Color.Blue;
             this.track2car2Lap.Location = new System.Drawing.Point(779, 287);
             this.track2car2Lap.Name = "track2car2Lap";
             this.track2car2Lap.Size = new System.Drawing.Size(36, 66);
             this.track2car2Lap.TabIndex = 6;
-            this.track2car2Lap.Text = "1";
             this.track2car2Lap.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.track2car2Lap.Visible = false;
             // 
             // Form1
             // 
@@ -134,9 +136,9 @@
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1000, 788);
+            this.Controls.Add(this.Winlabel);
             this.Controls.Add(this.track2car2Lap);
             this.Controls.Add(this.track2car1Lap);
-            this.Controls.Add(this.Winlabel);
             this.Controls.Add(this.car2Lap);
             this.Controls.Add(this.car1Lap);
             this.Controls.Add(this.titleLabel);

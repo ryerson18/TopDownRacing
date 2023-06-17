@@ -93,7 +93,7 @@ namespace TopDownRacing
         //car 2 check
         bool track2car2Check1 = false;
         bool track2car2Check2 = false;
-        bool track2car3Check3 = false;
+        bool track2car2Check3 = false;
         bool track2car2Check4 = false;
         bool track2car2Check5 = false;
         bool track2car2Check6 = false;
@@ -109,9 +109,6 @@ namespace TopDownRacing
         bool track2car2Check16 = false;
         bool track2car2redCheck = false;
 
-
-
-
         // player movement 
         // player 1 
         bool arrowLeft = false;
@@ -124,8 +121,7 @@ namespace TopDownRacing
         bool dRigth = false;
         bool wUp = false;
         bool sDown = false;
-
-       
+  
         //player 1 value
         int carAngle1 = 0;
         int carSpeed1 = 10;
@@ -277,17 +273,32 @@ namespace TopDownRacing
                 Car2 = new Rectangle(xCar2, yCar2, widthCar2, heightCar2);
             }
 
-
             //display score text
-            car1Lap.Visible = true;
-            car2Lap.Visible = true;
+            if (track == 1)
+            {
+                car1Lap.Visible = true;
+                car2Lap.Visible = true;
 
-            Winlabel.Text = "";
-            car1Lap.Text = "";
-            car2Lap.Text = "";
+                Winlabel.Text = "";
+                car1Lap.Text = "";
+                car2Lap.Text = "";
 
-            state = "playing";
-            Game_Timer.Enabled = true;
+                state = "playing";
+                Game_Timer.Enabled = true;
+            }
+
+            if(track == 2)
+            {
+                track2car1Lap.Visible = true;
+                track2car2Lap.Visible = true;
+
+                Winlabel.Text = "";
+                track2car1Lap.Text = "";
+                track2car2Lap.Text = "";
+
+                state = "playing";
+                Game_Timer.Enabled = true;
+            }
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -409,7 +420,7 @@ namespace TopDownRacing
                 carAngle2 += 8;
             }
 
-            // check to see if players go off the track 1
+            // track one stuff
             if(track == 1)
             {
                 bool offTrack1 = false;
@@ -519,14 +530,52 @@ namespace TopDownRacing
                     car2Check4 = false;
                     car2redCheck = false;
                 }
+
+                //check to see if players have done all the laps for track 1
+                if (carlap1 == 3)
+                {
+                    Game_Timer.Stop();
+                    Winlabel.Visible = true;
+                    titleLabel.Visible = false;
+                    car1Lap.Visible = false;
+                    car2Lap.Visible = false;
+                    track2car1Lap.Visible = false;
+                    track2car2Lap.Visible = false;
+                    state = "over";
+
+                    Winlabel.Text = "Player one is the race winner";
+                    Winlabel.Text += "\n\n Press space for next track";
+
+                    if (track == 1)
+                    {
+                        track = 2;
+                    }
+                }
+
+                if (carlap2 == 3)
+                {
+                    Game_Timer.Stop();
+                    Winlabel.Visible = true;
+                    car1Lap.Visible = false;
+                    car2Lap.Visible = false;
+                    state = "over";
+
+                    Winlabel.Text = "Player two is the race winner";
+
+                    Winlabel.Text += "\n\n Press space for next track";
+                    if (track == 1)
+                    {
+                        track = 2;
+                    }
+                }
             }
 
-            // check to see if players go off the track 2
+            // track two stuff
             if (track == 2)
             {
                 bool offTrack3 = false;
                 bool offTrack4 = false;
-                
+
                 for (int i = 0; i < tracklimitsList.Count; i++)
                 {
 
@@ -643,7 +692,6 @@ namespace TopDownRacing
                     track2car1Check15 = false;
                     track2car1Check16 = false;
                 }
-
                 if (track2car1Check1 == true && track2car1Check2 == true && track2car1Check3 == true && track2car1Check4 == true && track2car1Check5 == true && track2car1Check6 == true && track2car1Check7 == true && track2car1Check8 == true && track2car1Check9 == true && track2car1Check10 == true && track2car1Check11 == true && track2car1Check12 == true && track2car1Check13 == true && track2car1Check14 == true && track2car1Check15 == true && track2car1Check16 == true)
                 {
                     car1Track2++;
@@ -667,46 +715,138 @@ namespace TopDownRacing
                     track2car1Check14 = false;
                     track2car1Check15 = false;
                     track2car1Check16 = false;
-
-
-
                 }
 
-
-
-
-                
-
-            }
-
-            //check to see if players have doen all the laps
-            if (carlap1 == 1)
-            {
-                Game_Timer.Stop();
-                Winlabel.Visible = true;
-                titleLabel.Visible = false;
-                car1Lap.Visible = false;
-                car2Lap.Visible = false;
-                state = "over";
-                if (track == 1)
+                //car 2
+                if (track2check1.IntersectsWith(Car2))
                 {
-                    track = 2;
+                    track2car2Check1 = true;
                 }
-                
+                if (track2check2.IntersectsWith(Car2))
+                {
+                    track2car2Check2 = true;
+                }
+                if (track2check3.IntersectsWith(Car2))
+                {
+                    track2car2Check3 = true;
+                }
+                if (track2check4.IntersectsWith(Car2))
+                {
+                    track2car2Check4 = true;
+                }
+                if (track2check5.IntersectsWith(Car2))
+                {
+                    track2car2Check5 = true;
+                }
+                if (track2check6.IntersectsWith(Car2))
+                {
+                    track2car2Check6 = true;
+                }
+                if (track2check7.IntersectsWith(Car2))
+                {
+                    track2car2Check7 = true;
+                }
+                if (track2check8.IntersectsWith(Car2))
+                {
+                    track2car2Check8 = true;
+                }
+                if (track2check9.IntersectsWith(Car2))
+                {
+                    track2car2Check9 = true;
+                }
+                if (track2check10.IntersectsWith(Car2))
+                {
+                    track2car2Check10 = true;
+                }
+                if (track2check11.IntersectsWith(Car2))
+                {
+                    track2car2Check11 = true;
+                }
+                if (track2check12.IntersectsWith(Car2))
+                {
+                    track2car2Check12 = true;
+                }
+                if (track2check13.IntersectsWith(Car2))
+                {
+                    track2car2Check13 = true;
+                }
+                if (track2check14.IntersectsWith(Car2))
+                {
+                    track2car2Check14 = true;
+                }
+                if (track2check15.IntersectsWith(Car2))
+                {
+                    track2car2Check15 = true;
+                }
+                if (track2check16.IntersectsWith(Car2))
+                {
+                    track2car2Check16 = true;
+                }
+                if (track2redCheck.IntersectsWith(Car2))
+                {
+                    track2car2redCheck = true;
+                    track2car2Check1 = false;
+                    track2car2Check2 = false;
+                    track2car2Check3 = false;
+                    track2car2Check4 = false;
+                    track2car2Check5 = false;
+                    track2car2Check6 = false;
+                    track2car2Check7 = false;
+                    track2car2Check8 = false;
+                    track2car2Check9 = false;
+                    track2car2Check10 = false;
+                    track2car2Check11 = false;
+                    track2car2Check12 = false;
+                    track2car2Check13 = false;
+                    track2car2Check14 = false;
+                    track2car2Check15 = false;
+                    track2car2Check16 = false;
+                }
 
+                if (track2car2Check1 == true && track2car2Check2 == true && track2car2Check3 == true && track2car2Check4 == true && track2car2Check5 == true && track2car2Check6 == true && track2car2Check7 == true && track2car2Check8 == true && track2car2Check9 == true && track2car2Check10 == true && track2car2Check11 == true && track2car2Check12 == true && track2car2Check13 == true && track2car2Check14 == true && track2car2Check15 == true && track2car2Check16 == true)
+                {
+                    car2Track2++;
+
+                    track2car2Lap.Text = $"{car2Track2}";
+
+                    track2car2redCheck = false;
+                    track2car2Check1 = false;
+                    track2car2Check2 = false;
+                    track2car2Check3 = false;
+                    track2car2Check4 = false;
+                    track2car2Check5 = false;
+                    track2car2Check6 = false;
+                    track2car2Check7 = false;
+                    track2car2Check8 = false;
+                    track2car2Check9 = false;
+                    track2car2Check10 = false;
+                    track2car2Check11 = false;
+                    track2car2Check12 = false;
+                    track2car2Check13 = false;
+                    track2car2Check14 = false;
+                    track2car2Check15 = false;
+                    track2car2Check16 = false;
+                }
+
+
+                // check to see if players have done all laps for track 2
+                if (car1Track2 == 3)
+                {
+                    Game_Timer.Stop();
+                    state = "over";
+
+                    Winlabel.Text = "Player one is the race winner";
+
+                }
+                if (car2Track2 == 3)
+                {
+                    Game_Timer.Stop();
+                    state = "over";
+
+                    Winlabel.Text = "Player two is the race winner";
+
+                }
             }
-            
-            if(carlap2 == 1)
-            {
-                Game_Timer.Stop();
-                Winlabel.Visible = true;
-                car1Lap.Visible = false;
-                car2Lap.Visible = false;
-                state = "over";
-
-                Winlabel.Text = "Player two is the race winner";
-            }
-
 
 
 
@@ -727,20 +867,6 @@ namespace TopDownRacing
             {
                 titleLabel.Text = "";
                 SubtitleLabel.Text = "";
-
-                //player 1
-                e.Graphics.TranslateTransform(widthCar1 / 2 + Car1.X, widthCar1 / 2 + Car1.Y);
-                e.Graphics.RotateTransform(carAngle1);
-                e.Graphics.FillRectangle(redBrush, 0 - widthCar1 / 2, 0 - widthCar1 / 2, widthCar1, heightCar1);
-                e.Graphics.FillRectangle(greenBrush, 0 - widthCar1 / 2, 0 - widthCar1 / 2, widthCar1,5);
-                e.Graphics.ResetTransform();
-
-                //player 2
-                e.Graphics.TranslateTransform(widthCar2 / 2 + Car2.X, widthCar2 / 2 + Car2.Y);
-                e.Graphics.RotateTransform(carAngle2);
-                e.Graphics.FillRectangle(blueBrush, 0 - widthCar2 / 2, 0 - widthCar2 / 2, widthCar2, heightCar2);
-                e.Graphics.FillRectangle(yellowBrush, 0 - widthCar2 / 2, 0 - widthCar2 / 2, widthCar2, 5);
-                e.Graphics.ResetTransform();
 
                 //track 1
                 if (track == 1)
@@ -827,22 +953,25 @@ namespace TopDownRacing
                     e.Graphics.DrawArc(WhitePen, 380, 214, 200, 185, -90, 90);
                     e.Graphics.DrawArc(WhitePen, 490, 155, 210, 191, -90, 90);
                 }
+
+                //player 1
+                e.Graphics.TranslateTransform(widthCar1 / 2 + Car1.X, widthCar1 / 2 + Car1.Y);
+                e.Graphics.RotateTransform(carAngle1);
+                e.Graphics.FillRectangle(redBrush, 0 - widthCar1 / 2, 0 - widthCar1 / 2, widthCar1, heightCar1);
+                e.Graphics.FillRectangle(greenBrush, 0 - widthCar1 / 2, 0 - widthCar1 / 2, widthCar1, 5);
+                e.Graphics.ResetTransform();
+
+                //player 2
+                e.Graphics.TranslateTransform(widthCar2 / 2 + Car2.X, widthCar2 / 2 + Car2.Y);
+                e.Graphics.RotateTransform(carAngle2);
+                e.Graphics.FillRectangle(blueBrush, 0 - widthCar2 / 2, 0 - widthCar2 / 2, widthCar2, heightCar2);
+                e.Graphics.FillRectangle(yellowBrush, 0 - widthCar2 / 2, 0 - widthCar2 / 2, widthCar2, 5);
+                e.Graphics.ResetTransform();
             }
 
             if(state == "over")
             {
-                if(carlap1 == 1)
-                {
-                 Winlabel.Text = "Player one is the race winner";
-                 Winlabel.Text += "\n\nPress Space to Play or Esc to Exit";
-                }
-
-                if(carlap2 == 1)
-                {
-                 Winlabel.Text = "Player two is the race winner";
-                 Winlabel.Text += "\n\nPress Space to Play or Esc to Exit";
-
-                }                
+                   
             }
         }
 
