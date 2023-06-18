@@ -138,7 +138,7 @@ namespace TopDownRacing
         int carlap2 = 0;
         int car2Track2 = 0;
 
-        int track = 2;
+        int track = 1;
 
       
         public Form1()
@@ -227,6 +227,7 @@ namespace TopDownRacing
                 tracklimitsList.Add(new Rectangle(684, 550, 155, 40));
                 tracklimitsList.Add(new Rectangle(600, 590, 210, 10));
             }
+
 
             //player 1 starting value
             carAngle1 = 90;
@@ -532,19 +533,10 @@ namespace TopDownRacing
                 }
 
                 //check to see if players have done all the laps for track 1
-                if (carlap1 == 3)
+                if (carlap1 == 5)
                 {
                     Game_Timer.Stop();
-                    Winlabel.Visible = true;
-                    titleLabel.Visible = false;
-                    car1Lap.Visible = false;
-                    car2Lap.Visible = false;
-                    track2car1Lap.Visible = false;
-                    track2car2Lap.Visible = false;
                     state = "over";
-
-                    Winlabel.Text = "Player one is the race winner";
-                    Winlabel.Text += "\n\n Press space for next track";
 
                     if (track == 1)
                     {
@@ -552,17 +544,11 @@ namespace TopDownRacing
                     }
                 }
 
-                if (carlap2 == 3)
+                if (carlap2 == 5)
                 {
                     Game_Timer.Stop();
-                    Winlabel.Visible = true;
-                    car1Lap.Visible = false;
-                    car2Lap.Visible = false;
                     state = "over";
 
-                    Winlabel.Text = "Player two is the race winner";
-
-                    Winlabel.Text += "\n\n Press space for next track";
                     if (track == 1)
                     {
                         track = 2;
@@ -834,21 +820,14 @@ namespace TopDownRacing
                 {
                     Game_Timer.Stop();
                     state = "over";
-
-                    Winlabel.Text = "Player one is the race winner";
-
                 }
                 if (car2Track2 == 3)
                 {
                     Game_Timer.Stop();
                     state = "over";
 
-                    Winlabel.Text = "Player two is the race winner";
-
                 }
             }
-
-
 
 
             // refresh
@@ -867,6 +846,7 @@ namespace TopDownRacing
             {
                 titleLabel.Text = "";
                 SubtitleLabel.Text = "";
+                
 
                 //track 1
                 if (track == 1)
@@ -971,7 +951,45 @@ namespace TopDownRacing
 
             if(state == "over")
             {
-                   
+                if (carlap1 == 5)
+                {
+                    Winlabel.Visible = true;
+                    car1Lap.Visible = false;
+                    car2Lap.Visible = false;
+
+                    Winlabel.Text = "Player one is the race winner";
+                    Winlabel.Text += "\n\n Press space for next track";
+                }
+
+                if (carlap2 == 5)
+                {
+                    Winlabel.Visible = true;
+                    car1Lap.Visible = false;
+                    car2Lap.Visible = false;
+
+                    Winlabel.Text = "Player one is the race winner";
+                    Winlabel.Text += "\n\n Press space for next track";
+                }
+
+                if (car1Track2 == 3)
+                {
+                    Winlabel.Visible = true;
+                    track2car1Lap.Visible = false;
+                    track2car2Lap.Visible = false;
+
+                    Winlabel.Text = "Player one is the race winner";
+                    Winlabel.Text += "\n\n Press space to play again or ESC to exit";
+                }
+
+                if(car2Track2 == 3)
+                {
+                    Winlabel.Visible = true;
+                    track2car1Lap.Visible = false;
+                    track2car2Lap.Visible = false;
+                    Winlabel.Text = "Player two is the race winner";
+                    Winlabel.Text += "\n\n Press space to play again or ESC to exit";
+
+                }
             }
         }
 
